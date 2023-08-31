@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Temperature Converter</title>
+  <style>
+    body{
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        text-align: center;
+        color: black;
+        background-color: whitesmoke;
+    
+        
+    }
+    h1{
+        
+        text-align: center;
+        font-size: 65px;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        background-color: black;
+        color: whitesmoke;
+        height: 300px;
+        background-image: url(./pexels-invisiblepower-296559.jpg);
+        background-size: cover;
+        background-position-y:380px ;
+        
+    }
+    
+    .box-2{
+        height: 300px;
+        width: 400px;
+        position: relative;
+        top: 50px;
+        left: 400px;
+        font-size: 25px;
+    }
+    .para{
+        padding: 80px;
+        text-shadow: 2px 2px 15px rgb(48, 48, 48);
+    }
+
+  </style>
+</head>
+<body>
+  <div class="box-1">
+  <h1><p class="para"> Temperature Converter</p></h1>
+  </div>
+
+  <div class="box-2">
+  <label for="temperature">Enter temperature:</label>
+  <p>   </p>
+  <input type="number" id="temperature" step="0.01">
+  <select id="fromUnit">
+    <option value="celsius">Celsius</option>
+    <option value="fahrenheit">Fahrenheit</option>
+  </select>
+<br>
+<br>
+
+  <button onclick="convertTemperature()">Convert</button>
+
+  <h2>Converted Temperature:</h2>
+  <p id="result"></p>
+  </div>
+
+  <script>
+    function celsiusToFahrenheit(celsius) {
+      return (celsius * 9/5) + 32;
+    }
+
+    function fahrenheitToCelsius(fahrenheit) {
+      return (fahrenheit - 32) * 5/9;
+    }
+
+    function convertTemperature() {
+      const temperatureInput = parseFloat(document.getElementById('temperature').value);
+      const fromUnit = document.getElementById('fromUnit').value;
+      const resultElement = document.getElementById('result');
+
+      let result;
+      if (fromUnit === 'celsius') {
+        result = `${temperatureInput}°C is ${celsiusToFahrenheit(temperatureInput).toFixed(2)}°F`;
+      } else if (fromUnit === 'fahrenheit') {
+        result = `${temperatureInput}°F is ${fahrenheitToCelsius(temperatureInput).toFixed(2)}°C`;
+      }
+
+      resultElement.textContent = result;
+    }
+  </script>
+</body>
+</html>
